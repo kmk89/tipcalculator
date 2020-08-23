@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background: linear-gradient(to left, rgb(63, 19, 19), red);
+    }
+    #case {
+        border: 10px;
+        border-color: black;
+        width: 300px;
+        margin: 100px auto;
+        border-radius: 20px;
+        background-color: whitesmoke;
+    }
+    #header {
+        background-color: rgb(85, 35, 35);
+        color: white;
+        text-align: center;
+        width: 300px;
+        text-transform: uppercase;
+        border-radius: 20px 20px 0px 0px;
+        font-size: 18px;
+        margin: 0;   
+    }
+    h2 {
+        padding: 8px;
+    }
+    #entry {
+        margin-left: 15px;
+    }
+    #service {
+        margin-left: 15px;
+    }
+    #service {
+        margin-left: 15px;
+    }
+    #numpeople{
+        margin-left: 15px;
+    }
+    #enter{
+        margin: 20px;
+        align-self: center;
+        background-color: rgb(158, 74, 59);
+        color: white;
+        font-size: 15px;
+        border-radius: 10px;
+        padding: 6px;
+    }
+    #enter:hover{
+        background-color: white;
+        color: rgb(158, 74, 59);
+        transition: 200ms;
+    }
+    #answer {
+        margin: 20px;
+        display: block;
+        padding-bottom: 20px;
+    }
+
+</style>
+<body>
+    <div id=case>
+        <div id=header>
+            <h2>Tip Calculator
+            </h2>
+        </div>
+        <div id=entry>
+            <p>How much was your bill?</p>
+            <input type="text" id="billAmt" placeholder="Bill Amount">
+        </div>
+        <div id=service>
+            <p>How was your service?</p>
+            <select name="rating" id="rating">
+                <option value='.25'>25%-Excellent</option>
+                <option value='.2'>20%-Good</option>
+                <option value='.15'>15%-Okay</option>
+                <option value='.1'>10%-Not Good</option>
+            </select>
+        </div>
+        <div id=numpeople>
+            <p>How many people are sharing the bill?</p>
+            <input type="text" id="people" placeholder="Number of People">
+        </div>
+        <button id='enter'>Calculate!
+        </button>
+        <div id=answer>
+            <p><strong>Total tip= $</strong><span id='tipanswer'>0.00</span></p>
+            <p><strong>Tip Per Person= $</strong><span  id='tipppanswer'>0.00</span></p>
+        </div>
+    </div>
+</body>
+<script>
+   var calculate=document.getElementById('enter');
+
+    calculate.addEventListener('click', function(){
+    var billAmt=document.getElementById('billAmt').value;
+    var serviceQual=(document.getElementById('rating').value);
+    var numpeople=(document.getElementById('people').value);
+
+   if (billAmt===''||serviceQual==0) {
+        alert('Please enter values');
+        return;
+    }
+
+    if (numpeople===''||numpeople<1){
+        numpeople=1;
+    }
+    
+    var tippp=(billAmt*serviceQual)/numpeople;
+    tippp=tippp.toFixed(2);
+    
+    var tip=(billAmt*serviceQual);
+    tip=tip.toFixed(2); 
+
+    document.getElementById('answer').style.display='block';
+    document.getElementById('tipanswer').innerHTML=tip;
+    document.getElementById('tipppanswer').innerHTML=tippp;
+});
+
+document.getElementById('answer').style.display='none';
+
+
+</script>
+</html>
